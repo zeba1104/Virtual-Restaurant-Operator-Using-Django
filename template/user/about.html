@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Food For Thought | Virtual Restaurant Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4f0ff 100%);
+        }
+        
+        .mission-gradient {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+        
+        .vision-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -50px;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 50px;
+            background-color: #4DA6E7;
+        }
+        
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .blog-card:hover .blog-title {
+            color: #4DA6E7;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .floating-food {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    {% include 'includes/user_header.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                    <h6 class="text-sm text-blue-600 uppercase font-semibold mb-2">About Thought For Food</h6>
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">Empowering the Future of Food Service</h1>
+                    <p class="text-lg text-gray-600 mb-8">A transformative virtual restaurant operator platform redefining how modern restaurants operate and grow in a digital-first world.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-block font-medium">
+                            Contact Us
+                        </a>
+                        <a href="#services" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-full hover:bg-blue-50 transition duration-300 inline-block font-medium">
+                            Our Services
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Virtual Restaurant" class="rounded-xl shadow-2xl w-full">
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg floating-food">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Food" class="w-24 h-24 rounded-lg object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Intro Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center lg:space-x-12 space-y-10 lg:space-y-0">
+                <div class="lg:w-1/2 animate-fade-in">
+                    <img src="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="About Image" class="rounded-xl shadow-lg w-full">
+                </div>
+                <div class="lg:w-1/2 animate-fade-in" style="animation-delay: 0.2s;">
+                    <h6 class="text-sm text-blue-600 uppercase font-semibold mb-2">Our Story</h6>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Redefining Restaurant Operations</h2>
+                    <div class="w-16 h-1 bg-blue-600 mb-6"></div>
+                    <p class="text-gray-600 mb-6">Founded on the vision of streamlining restaurant operations, enhancing brand identity, and delivering scientifically prepared, long-shelf-life cuisine, our platform empowers food brands to evolve beyond traditional brick-and-mortar limitations.</p>
+                    <p class="text-gray-600 mb-6">We understand the operational challenges faced by the food industry today—from rising overhead costs and staffing shortages to inefficient processes and dependence on third-party delivery apps. At Food For Thought, we bring technology, expertise, and innovation together to create a smart, scalable, and sustainable solution for restaurant businesses.</p>
+                    <p class="text-gray-600 mb-8">Whether you're an independent eatery, a cloud kitchen, or an established brand looking to scale digitally, our platform provides everything you need—from expert consultations and staff management tools to branding support and market expansion strategies.</p>
+                    <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-block font-medium">
+                        Learn More About Our Approach
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h6 class="text-sm text-blue-600 uppercase font-semibold mb-2">Our Solutions</h6>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What We Offer</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Comprehensive solutions tailored for the modern food business</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:border-blue-500 border border-transparent">
+                    <div class="text-blue-600 mb-6 text-4xl">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Business Collaboration & Consulting</h3>
+                    <p class="text-gray-600 mb-4">Connect with culinary and operational experts to optimize your restaurant strategy.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center hover:text-blue-800">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:border-blue-500 border border-transparent">
+                    <div class="text-blue-600 mb-6 text-4xl">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Shelf-Stable Indian Cuisine Logistics</h3>
+                    <p class="text-gray-600 mb-4">Scientifically prepared meals with up to 7 days of freshness, reducing food wastage.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center hover:text-blue-800">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:border-blue-500 border border-transparent">
+                    <div class="text-blue-600 mb-6 text-4xl">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Staff & Operational Management</h3>
+                    <p class="text-gray-600 mb-4">Simplify scheduling, training, and issue resolution with our digital tools.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center hover:text-blue-800">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:border-blue-500 border border-transparent">
+                    <div class="text-blue-600 mb-6 text-4xl">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Branding & Customer Engagement</h3>
+                    <p class="text-gray-600 mb-4">Establish your unique identity and connect with your customers—without relying on third-party platforms.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center hover:text-blue-800">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:border-blue-500 border border-transparent">
+                    <div class="text-blue-600 mb-6 text-4xl">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Virtual Expansion Made Easy</h3>
+                    <p class="text-gray-600 mb-4">Launch new brands and reach new markets without physical investment.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center hover:text-blue-800">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 hover:border-blue-500 border border-transparent">
+                    <div class="text-blue-600 mb-6 text-4xl">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">Growth & Analytics</h3>
+                    <p class="text-gray-600 mb-4">Data-driven insights to help you make informed business decisions and scale effectively.</p>
+                    <a href="#" class="text-blue-600 font-medium flex items-center hover:text-blue-800">
+                        Learn more <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-gradient py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h6 class="text-sm text-blue-600 uppercase font-semibold mb-2">Our Purpose</h6>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Mission</h2>
+                <div class="w-16 h-1 bg-blue-600 mx-auto mb-6"></div>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bullseye text-blue-600 text-3xl"></i>
+                    </div>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        At Food For Thought, our mission is to revolutionize the restaurant industry by offering a digital-first platform that simplifies operations, reduces costs, and enables restaurants to grow without boundaries. We are committed to empowering food businesses with the tools they need to succeed in a fast-evolving, tech-driven world.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed mt-6">
+                        Through our innovative features—ranging from long-shelf-life meal logistics and operational support to branding and customer engagement—we help restaurants thrive while maintaining quality, authenticity, and efficiency. Our mission extends beyond technology—we aim to build a collaborative ecosystem where restaurants can share knowledge, grow together, and deliver consistent, high-quality food experiences to their customers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-gradient py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center lg:space-x-12 space-y-10 lg:space-y-0">
+                <div class="lg:w-1/2 animate-fade-in">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Team" class="rounded-xl shadow-lg w-full">
+                </div>
+                <div class="lg:w-1/2 animate-fade-in" style="animation-delay: 0.2s;">
+                    <h6 class="text-sm text-blue-600 uppercase font-semibold mb-2">Looking Ahead</h6>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Vision</h2>
+                    <div class="w-16 h-1 bg-blue-600 mb-6"></div>
+                    <p class="text-gray-600 mb-6">Our vision is to be the world's leading virtual restaurant enabler—supporting restaurants of all sizes to break free from physical limitations and scale into smart, sustainable digital brands.</p>
+                    <p class="text-gray-600 mb-6">We envision a future where restaurants are no longer constrained by geography, staffing, or infrastructure, but instead powered by data, driven by creativity, and backed by powerful technology.</p>
+                    <p class="text-gray-600 mb-8">At Food For Thought, we aspire to create a new standard for how the food service industry operates—efficient, intelligent, and customer-centric. We aim to become a trusted partner for culinary entrepreneurs, helping them innovate, expand, and leave a lasting impact on the way people experience food.</p>
+                    <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 inline-block font-medium">
+                        Join Our Vision
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h6 class="text-sm text-blue-600 uppercase font-semibold mb-2">Behind the Scenes</h6>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Meet Our Leadership Team</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">The passionate minds driving innovation in food service</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Team Member" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Raj Patel</h3>
+                        <p class="text-blue-600 mb-3">Founder & CEO</p>
+                        <p class="text-gray-600 text-sm">With 15+ years in food tech, Raj envisioned a platform that bridges culinary excellence with digital innovation.</p>
+                        <div class="flex space-x-3 mt-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Team Member" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Priya Sharma</h3>
+                        <p class="text-blue-600 mb-3">Chief Culinary Officer</p>
+                        <p class="text-gray-600 text-sm">Michelin-starred chef turned food scientist, Priya leads our culinary innovation and shelf-stable food research.</p>
+                        <div class="flex space-x-3 mt-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Team Member" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Amit Desai</h3>
+                        <p class="text-blue-600 mb-3">CTO</p>
+                        <p class="text-gray-600 text-sm">Tech visionary with expertise in building scalable platforms that power thousands of virtual restaurants.</p>
+                        <div class="flex space-x-3 mt-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Team Member" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">Neha Gupta</h3>
+                        <p class="text-blue-600 mb-3">Head of Operations</p>
+                        <p class="text-gray-600 text-sm">Former restaurant chain operator who understands the pain points of food service businesses intimately.</p>
+                        <div class="flex space-x-3 mt-4">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-full hover:bg-blue-50 transition duration-300 inline-block font-medium">
+                    View All Team Members
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h6 class="text-sm text-blue-600 uppercase font-semibold mb-2">Our Foundation</h6>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Core Values</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">The principles that guide everything we do</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-lightbulb text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Innovation</h3>
+                    <p class="text-gray-600 text-center">We constantly push boundaries to develop solutions that transform the food service industry.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-heart text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Passion</h3>
+                    <p class="text-gray-600 text-center">Our love for food and technology drives us to create exceptional experiences for our partners.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-hands-helping text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Collaboration</h3>
+                    <p class="text-gray-600 text-center">We believe in working together—with our team, partners, and the community—to achieve shared success.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-balance-scale text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Integrity</h3>
+                    <p class="text-gray-600 text-center">We operate with honesty, transparency, and ethical business practices in all our relationships.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-chart-line text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Excellence</h3>
+                    <p class="text-gray-600 text-center">We strive for the highest standards in everything we do, from product quality to customer service.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-leaf text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center text-gray-800 mb-3">Sustainability</h3>
+                    <p class="text-gray-600 text-center">We're committed to solutions that reduce food waste and environmental impact while being profitable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Food Business?</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">Join hundreds of restaurants that have scaled their operations and increased profitability with Food For Thought.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#" class="bg-white text-blue-600 px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300 font-medium">
+                        Get Started Today
+                    </a>
+                    <a href="#" class="border border-white text-white px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300 font-medium">
+                        Schedule a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Food For Thought</h3>
+                    <p class="text-gray-400">Empowering the future of food service through innovative virtual restaurant solutions.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Virtual Restaurant Setup</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Menu Optimization</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Operational Management</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Branding & Marketing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Consulting Services</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-blue-400"></i>
+                            <span class="text-gray-400">123 Cloud Kitchen Lane, Ahmedabad, India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-blue-400"></i>
+                            <span class="text-gray-400">+91 12345 67890</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-blue-400"></i>
+                            <span class="text-gray-400">info@foodforthought.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Food For Thought. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Back to Top Button
+        window.addEventListener('scroll', function() {
+            var backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

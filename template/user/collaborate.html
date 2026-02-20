@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DigiMedia - Contact Us</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'new_user/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- FontAwesome & Additional CSS -->
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/templatemo-digimedia-v3.css' %}">
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/owl.css' %}">
+    
+    <style>
+       body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .collaboration {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            
+            text-align: left;
+        }
+        .grid-container {
+    display: flex; /* Use flexbox for equal-width columns */
+    justify-content: space-between; /* Ensures equal spacing */
+    gap: 20px; /* Space between containers */
+    padding: 20px;
+}
+
+.grid-item {
+    flex: 1; /* Makes all items equal width */
+    max-width: 33%; /* Each takes 33% of the container */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+        .grid-item h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4da6e7;
+            margin-bottom: 15px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #4DA6E7;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #3687c7;
+        }
+      
+        
+        .contain {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            padding: 50px;
+            
+            align-items: top;
+        }
+
+        .collaboration-form {
+            width: 50%;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background: #0056b3;
+        }
+
+        .content {
+            width: 50%;
+            padding: 30px;
+        }
+
+        .content h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+    </style>
+</head>
+<body>
+    {% include 'includes/user_header.html' %}
+<br><br><br>
+    <section class="collaboration">
+        <h1>Partner with Us: Unlock New Opportunities in the Virtual Restaurant World</h1>
+        <p>At Food for Thought, we believe in the power of partnerships...</p>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <h2>Why Collaborate with Us?</h2>
+                <ul>
+                    <li><strong>Expertise in Virtual Dining:</strong> With years of experience, we help you scale efficiently.</li>
+                    <li><strong>Cutting-Edge Technology:</strong> White-label ordering platforms and data-driven menu optimization.</li>
+                    <li><strong>Scalable Solutions:</strong> Ghost kitchen infrastructure with marketing and operational support.</li>
+                    <li><strong>Marketing & Brand Growth:</strong> Social media management, influencer collaborations, and cross-promotion.</li>
+                </ul>
+            </div>
+            <div class="grid-item">
+                <h2>Types of Collaborations</h2>
+                <ul>
+                    <li><strong>Restaurant Brands:</strong> Expand with virtual brands.</li>
+                    <li><strong>Food Entrepreneurs:</strong> Get end-to-end support from concept to launch.</li>
+                    <li><strong>Cloud Kitchen Operators:</strong> Integrate multiple virtual brands in one kitchen.</li>
+                    <li><strong>Delivery Platforms:</strong> Enhance offerings with ready-to-go virtual brands.</li>
+                    <li><strong>Influencers and Chefs:</strong> Launch a virtual restaurant without a physical space.</li>
+                </ul>
+            </div>
+            <div class="grid-item">
+                <h2>Benefits of Collaboration</h2>
+                <ul>
+                    <li><strong>Streamlined Operations:</strong> Simplify the virtual restaurant process.</li>
+                    <li><strong>Increased Revenue:</strong> Generate new revenue streams.</li>
+                    <li><strong>Access to Data & Insights:</strong> Optimize menus and marketing.</li>
+                    <li><strong>Flexible, Low-Cost Entry:</strong> Low upfront costs reduce risks.</li>
+                    <li><strong>Brand Empowerment:</strong> Reach the right audience and grow your brand.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contain">
+            <div class="collaboration-form">
+                <h2>Collaborate With Us</h2>
+                <form method="post">
+                    {% csrf_token %}
+        
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+        
+                    <div class="mb-3">
+                        <label for="{{ form.full_name.id_for_label }}" class="form-label">Full Name</label>
+                        {{ form.full_name }}
+                        {% if form.full_name.errors %}
+                            <div class="text-danger">{{ form.full_name.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger">{{ form.email.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="{{ form.phone.id_for_label }}" class="form-label">Phone Number</label>
+                        {{ form.phone }}
+                        {% if form.phone.errors %}
+                            <div class="text-danger">{{ form.phone.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="{{ form.business_name.id_for_label }}" class="form-label">Business Name</label>
+                        {{ form.business_name }}
+                        {% if form.business_name.errors %}
+                            <div class="text-danger">{{ form.business_name.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="{{ form.collaboration_type.id_for_label }}" class="form-label">Type of Collaboration</label>
+                        {{ form.collaboration_type }}
+                        {% if form.collaboration_type.errors %}
+                            <div class="text-danger">{{ form.collaboration_type.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="{{ form.message.id_for_label }}" class="form-label">Message / Proposal</label>
+                        {{ form.message }}
+                        {% if form.message.errors %}
+                            <div class="text-danger">{{ form.message.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        
+            <div class="content">
+                <h2>Why Collaborate With Us?</h2>
+                <p>We offer unique opportunities for restaurants, food entrepreneurs, and delivery platforms to grow and expand their reach. Partner with us to enhance your brand visibility, access new markets, and create innovative food experiences.</p>
+        
+                <h2>Our Mission</h2>
+                <p>We aim to connect culinary innovators with food lovers, creating an ecosystem where great food ideas thrive. Whether you're a chef, a cloud kitchen, or a restaurant, let's work together to bring the best dining experiences to the world.</p>
+            </div>
+        </div>
+        
+    
+    </section>
+</body>
+</html>

@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 1024px;
+            margin: 2.5rem auto;
+            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+        }
+        .table {
+            width: 100%;
+            background: white;
+            border: 1px solid #e5e7eb;
+        }
+        .table thead {
+            background: #e5e7eb;
+        }
+        .table th, .table td {
+            padding: 0.75rem 1.5rem;
+            text-align: left;
+            border-top: 1px solid #e5e7eb;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: #374151;
+        }
+        .form-group input {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+        }
+        .error {
+            color: #f87171;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        .submit-btn {
+            background-color: #2563eb;
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #1d4ed8;
+        }
+        footer {
+            background-color: #111827;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+        .footer-container {
+            max-width: 1280px;
+            margin: auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .footer-container h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .footer-container p, .footer-container a, .footer-container span {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+        .footer-container a:hover {
+            color: white;
+            transition: color 0.3s;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1f2937;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-bottom a {
+            margin: 0 0.75rem;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        #back-to-top:hover {
+            background-color: #1d4ed8;
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'includes/user_header.html' %}
+    <br><br><br>
+
+    <div class="container">
+        <h2 class="text-3xl font-bold text-center mb-8">Checkout Summary</h2>
+
+        <div class="overflow-x-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Package Name</th>
+                        <th>Price (USD)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ package.name }}</td>
+                        <td>₹{{ package.price }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="text-2xl font-semibold mt-10 mb-6">Enter Your Details</h4>
+        <form method="post" action="{% url 'process_payment' package.id %}" class="space-y-6">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="full_name">Full Name *</label>
+                {{ form.full_name }}
+
+                {% if form.full_name.errors %}
+                    <div class="error">
+                        {% for error in form.full_name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                {{ form.email }}
+
+                {% if form.email.errors %}
+                    <div class="error">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                {{ form.phone }}
+
+                {% if form.phone.errors %}
+                    <div class="error">
+                        {% for error in form.phone.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="submit-btn">Proceed to Payment</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Thought For Food</h3>
+                <p>Empowering the future of food service through innovative virtual restaurant solutions.</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Services</h3>
+                <ul class="space-y-2">
+                    <li><a href="#">Virtual Restaurant Setup</a></li>
+                    <li><a href="#">Menu Optimization</a></li>
+                    <li><a href="#">Operational Management</a></li>
+                    <li><a href="#">Branding & Marketing</a></li>
+                    <li><a href="#">Consulting Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <ul class="space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mr-2 text-blue-400"></i><span>123 Cloud Kitchen Lane, Ahmedabad, India</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt mr-2 text-blue-400"></i><span>+91 12345 67890</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-2 text-blue-400"></i><span>info@foodforthought.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2023 Food For Thought. All rights reserved.</p>
+            <div class="flex">
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms of Service</a> |
+                <a href="#">Sitemap</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+    </script>
+
+</body>
+</html>

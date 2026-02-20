@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>DigiMedia - Contact Us</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'new_user/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    <!-- FontAwesome & Additional CSS -->
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/templatemo-digimedia-v3.css' %}">
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/animated.css' %}">
+    <link rel="stylesheet" href="{% static 'new_user/assets/css/owl.css' %}">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .contact-section {
+            padding: 80px 0;
+            background: white;
+        }
+        .section-title {
+            color: #4DA6E7;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .section-subtitle {
+            font-size: 18px;
+            text-align: center;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .contact-card {
+            background: white;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: left;
+            transition: transform 0.3s ease-in-out;
+        }
+        .contact-card:hover {
+            transform: scale(1.02);
+        }
+        .contact-info h3, .contact-form h3 {
+            color: #4DA6E7;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .form-control {
+            border: 1px solid #4DA6E7;
+            padding: 12px;
+            border-radius: 5px;
+        }
+        .btn-submit {
+            background: #4DA6E7;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-submit:hover {
+            background: #ffcc00;
+            color: black;
+            transform: scale(1.05);
+        }
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 20px;
+            color: #4DA6E7;
+        }
+        .social-icons a:hover {
+            color: #ffcc00;
+        }
+        .contact-card p i {
+            color: #4DA6E7; /* Blue color */
+        }
+        .text-danger {
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    {% include 'includes/user_header.html' %}
+    <br><br>
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-card">
+                        <h3>Get In Touch</h3>
+                        <p>Have questions about our services? We’re here to help.</p>
+                        <p><i class="fa fa-map-marker"></i> 123 Cloud Kitchen Lane, Ahmedabad, India</p>
+                        <p><i class="fa fa-phone"></i> (800) 123-4567</p>
+                        <p><i class="fa fa-envelope"></i> support@virtualdining.com</p>
+                        <p><i class="fa fa-clock-o"></i> Mon-Fri: 9AM-9PM</p>
+                        
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="contact-card">
+                        <h3>Send Us a Message</h3><br>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="success-message">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                        <span class="text-danger">{{ form.name.errors.0 }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <span class="text-danger">{{ form.email.errors.0 }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                        <span class="text-danger">{{ form.phone.errors.0 }}</span>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6 form-group mb-3">
+                                    {{ form.subject }}
+                                    {% if form.subject.errors %}
+                                        <span class="text-danger">{{ form.subject.errors.0 }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                {{ form.message }}
+                                {% if form.message.errors %}
+                                    <span class="text-danger">{{ form.message.errors.0 }}</span>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn btn-submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</body>
+</html>

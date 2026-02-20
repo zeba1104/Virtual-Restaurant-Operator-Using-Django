@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Restaurant Operator | Comprehensive Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="scroll-smooth font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    {% include 'includes/user_header.html' %}
+
+    <!-- Hero Section -->
+    <section class="gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+          <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+              
+              {% if section3 %}
+                <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                  <span class="block">{{ section3.title }}</span>
+                  <span class="block text-indigo-600">{{ section3.heading }}</span>
+                </h1>
+                <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                  {{ section3.content }}
+                </p>
+                <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
+                  <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                    <div class="rounded-md shadow">
+                      <a href="{{ section3.button_link }}" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition duration-300">
+                        {{ section3.button_name }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+      
+            </div>
+      
+            <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+              <div class="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                {% if section3 and section3.image %}
+                  <img class="w-full rounded-lg" src="{{ section3.image.url }}" alt="{{ section3.title }}">
+                {% else %}
+                  <img class="w-full rounded-lg" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" alt="Virtual restaurant kitchen">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <section id="services" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    Our Core Services
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Explore the wide range of services we offer to build, optimize, and grow your virtual restaurant.
+                </p>
+            </div>
+    
+            <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {% for service in services %}
+                <div class="service-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 ease-in-out">
+                    <div class="p-6">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-indigo-100 rounded-md p-3">
+                                <img src="{{ service.image.url }}" alt="{{ service.heading }}" class="w-8 h-8 object-contain">
+                            </div>
+                            <div class="ml-5">
+                                <h3 class="text-lg font-medium text-gray-900">{{ service.heading }}</h3>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-base text-gray-500">
+                            {{ service.subheading }}
+                        </p>
+                        <div class="mt-6">
+                            <a href="{{ service.url }}" class="text-indigo-600 hover:text-indigo-500 font-medium">
+                                Learn more <span aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Detailed Service Sections -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Service 1 -->
+            <div id="service-1" class="bg-white rounded-xl shadow-md overflow-hidden mb-16">
+                <div class="md:flex">
+                    <div class="md:flex-shrink-0 md:w-1/3">
+                        <img class="h-full w-full object-cover md:w-full" src="https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Restaurant launch">
+                    </div>
+                    <div class="p-8 md:w-2/3">
+                        <div class="uppercase tracking-wide text-sm text-indigo-600 font-semibold">Service</div>
+                        <h2 class="mt-2 text-2xl font-bold text-gray-900">End-to-End Virtual Restaurant Launch Support</h2>
+                        <p class="mt-3 text-base text-gray-500">
+                            We offer a complete setup solution, guiding you through every step of the process—from concept creation to kitchen setup and menu development. Whether you're starting from scratch or transitioning from a traditional model, we ensure a smooth, successful launch.
+                        </p>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-medium text-gray-900">Key Features:</h3>
+                            <ul class="mt-2 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Concept creation and branding</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Kitchen setup and logistics</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Menu development and pricing strategies</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Initial marketing and promotion</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Platform integration for food delivery apps</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md text-base font-medium transition duration-300">
+                                Launch Your Virtual Restaurant Today
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div id="service-2" class="bg-white rounded-xl shadow-md overflow-hidden mb-16">
+                <div class="md:flex md:flex-row-reverse">
+                    <div class="md:flex-shrink-0 md:w-1/3">
+                        <img class="h-full w-full object-cover md:w-full" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Data analytics">
+                    </div>
+                    <div class="p-8 md:w-2/3">
+                        <div class="uppercase tracking-wide text-sm text-indigo-600 font-semibold">Service</div>
+                        <h2 class="mt-2 text-2xl font-bold text-gray-900">Data-Driven Menu Optimization</h2>
+                        <p class="mt-3 text-base text-gray-500">
+                            Our advanced analytics tools help you optimize your menu based on customer preferences, market trends, and performance data. We help you design a menu that boosts sales and customer satisfaction.
+                        </p>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-medium text-gray-900">Key Features:</h3>
+                            <ul class="mt-2 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Sales and customer data analysis</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Pricing strategies for higher margins</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Recommendations for best-selling dishes</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Menu performance tracking and adjustments</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md text-base font-medium transition duration-300">
+                                Optimize My Menu
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div id="service-3" class="bg-white rounded-xl shadow-md overflow-hidden mb-16">
+                <div class="md:flex">
+                    <div class="md:flex-shrink-0 md:w-1/3">
+                        <img class="h-full w-full object-cover md:w-full" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Mobile app">
+                    </div>
+                    <div class="p-8 md:w-2/3">
+                        <div class="uppercase tracking-wide text-sm text-indigo-600 font-semibold">Service</div>
+                        <h2 class="mt-2 text-2xl font-bold text-gray-900">White-Label App and Direct Ordering System</h2>
+                        <p class="mt-3 text-base text-gray-500">
+                            We provide a white-label app solution for your virtual restaurant, allowing customers to order directly from you, bypassing third-party fees and giving you full control over the customer experience.
+                        </p>
+                        <div class="mt-6">
+                            <h3 class="text-lg font-medium text-gray-900">Key Features:</h3>
+                            <ul class="mt-2 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Custom branded app</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Direct online ordering system</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Customer data ownership</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">Seamless integration with payment gateways</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                    <span class="text-gray-600">In-app promotions and loyalty programs</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-8">
+                            <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md text-base font-medium transition duration-300">
+                                Get Your Own App
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Us Section -->
+    <section id="why-us" class="py-16 bg-indigo-700 text-white parallax" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4dbc16a76ae6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-3xl font-extrabold sm:text-4xl">
+                    Why Choose VirtualEats?
+                </h2>
+                <p class="mt-4 max-w-2xl text-xl lg:mx-auto">
+                    Your Success is Our Priority
+                </p>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-20 text-white">
+                        <i class="fas fa-award text-xl"></i>
+                    </div>
+                    <h3 class="mt-6 text-lg font-medium">Expertise</h3>
+                    <p class="mt-2 text-base text-indigo-100">
+                        Decades of combined experience in the virtual restaurant industry.
+                    </p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-20 text-white">
+                        <i class="fas fa-puzzle-piece text-xl"></i>
+                    </div>
+                    <h3 class="mt-6 text-lg font-medium">Tailored Solutions</h3>
+                    <p class="mt-2 text-base text-indigo-100">
+                        Customized services for your specific needs and business goals.
+                    </p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-20 text-white">
+                        <i class="fas fa-chart-bar text-xl"></i>
+                    </div>
+                    <h3 class="mt-6 text-lg font-medium">Proven Results</h3>
+                    <p class="mt-2 text-base text-indigo-100">
+                        Our clients see rapid growth and higher profit margins.
+                    </p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-6">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-white bg-opacity-20 text-white">
+                        <i class="fas fa-tasks text-xl"></i>
+                    </div>
+                    <h3 class="mt-6 text-lg font-medium">Comprehensive Services</h3>
+                    <p class="mt-2 text-base text-indigo-100">
+                        From marketing to kitchen setup, we handle it all under one roof.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button class="bg-white hover:bg-gray-100 text-indigo-700 px-8 py-4 rounded-md text-lg font-bold transition duration-300">
+                    Partner with Us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                    What Our Clients Say
+                </h2>
+            </div>
+
+            <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/42.jpg" alt="Testimonial">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Sarah Johnson</h4>
+                            <p class="text-indigo-600">Founder, Cloud Bites</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "VirtualEats helped us launch our virtual restaurant in just 4 weeks. Their expertise in menu optimization increased our margins by 30%."
+                    </p>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Testimonial">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Michael Chen</h4>
+                            <p class="text-indigo-600">CEO, Ghost Kitchen Co.</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "Their white-label app solution saved us thousands in third-party fees. Customer retention increased by 45% after implementation."
+                    </p>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-lg">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <img class="h-12 w-12 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Testimonial">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-medium text-gray-900">Emily Rodriguez</h4>
+                            <p class="text-indigo-600">Owner, Urban Eats</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600">
+                        "The marketing team at VirtualEats tripled our online orders in 3 months. Their data-driven approach is game-changing."
+                    </p>
+                    <div class="mt-4 flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="contact" class="bg-indigo-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                <span class="block">Ready to launch or scale your virtual restaurant?</span>
+                <span class="block text-indigo-200">Contact us today to learn more.</span>
+            </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 transition duration-300">
+                        Get Started
+                    </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 bg-opacity-60 hover:bg-opacity-70 transition duration-300">
+                        Contact Sales
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Services</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#service-1" class="text-base text-gray-300 hover:text-white">Restaurant Launch</a></li>
+                        <li><a href="#service-2" class="text-base text-gray-300 hover:text-white">Menu Optimization</a></li>
+                        <li><a href="#service-3" class="text-base text-gray-300 hover:text-white">White-Label App</a></li>
+                        <li><a href="#service-4" class="text-base text-gray-300 hover:text-white">Ghost Kitchens</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Partners</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Terms</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Connect</h3>
+                    <div class="mt-4 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Newsletter</h4>
+                        <div class="mt-2 flex">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md text-gray-900 w-full">
+                            <button class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-md">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2023 VirtualEats. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Add animation to service cards when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

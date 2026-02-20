@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>DigiMedia - Pricing Packages</title>
+
+  <!-- Bootstrap (if needed elsewhere in the project) -->
+  <link href="{% static 'new_user/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- FontAwesome and other styles -->
+  <link rel="stylesheet" href="{% static 'new_user/assets/css/fontawesome.css' %}">
+  <link rel="stylesheet" href="{% static 'new_user/assets/css/templatemo-digimedia-v3.css' %}">
+  <link rel="stylesheet" href="{% static 'new_user/assets/css/animated.css' %}">
+  <link rel="stylesheet" href="{% static 'new_user/assets/css/owl.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-yYbDQ6CqC6kpOlW8eJqGZL5EtXhVgy9DkBGX/5eeTxVcHc7qJzOjk5H5LbQExmFlMfJjfbU2Kp+bLb1Tk0BNEA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    /* Optional: Smooth transition between hover states */
+    .pricing-card:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Header -->
+  {% include 'includes/user_header.html' %}
+
+  
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-20">
+    <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
+
+      <!-- Section Heading -->
+      <div class="text-center mb-16"><br><br>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800">Choose Your Website Package</h2>
+        <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">Find the right package for your business needs.</p>
+      </div>
+
+      <!-- Pricing Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+        {% for package in packages %}
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 pricing-card">
+          <div class="bg-blue-100 p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-800">{{ package.name }}</h3>
+          </div>
+          <div class="p-6 text-center">
+            <div class="text-4xl font-bold text-gray-800 mb-4">₹{{ package.price }}</div>
+            <ul class="space-y-3 mb-6 text-left">
+              {% for feature in package.get_features_list %}
+              <li class="text-gray-600 flex items-start">
+                <i class="fa-solid fa-check text-blue-500 mr-2 mt-1"></i>
+
+                <span>{{ feature }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+            <a href="{% url 'package_detail_user' package.id %}" class="inline-block bg-blue-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
+              Read More
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Learn More Button -->
+      <div class="text-center mt-16">
+        <a href="{% url 'package_list' %}" class="bg-blue-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-blue-700 transition duration-300">
+          Learn More About Pricing
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="{% static 'new_user/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>

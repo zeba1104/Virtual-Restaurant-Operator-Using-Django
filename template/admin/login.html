@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top left, #1f1f1f, #0a0a0a);
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Optional subtle texture */
+            background-repeat: repeat;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            backdrop-filter: blur(2px);
+        }
+
+        .login-form {
+            background: rgba(30, 30, 30, 0.95);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+            color: #00bcd4;
+            letter-spacing: 1px;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 45px 12px 40px;
+            background-color: #2a2a2a;
+            color: #f1f1f1;
+            border: 1px solid #444;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-color: #00bcd4;
+            outline: none;
+            background-color: #333;
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 16px;
+        }
+
+        .button input {
+            width: 100%;
+            padding: 12px;
+            background-color: #00bcd4;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button input:hover {
+            background-color: #0097a7;
+        }
+
+        .text,
+        .sign-up-text {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        .text a,
+        .sign-up-text a {
+            color: #00bcd4;
+            text-decoration: none;
+        }
+
+        .text a:hover,
+        .sign-up-text a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .login-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-form">
+            <div class="title">Admin Login</div>
+            {% if messages %}
+    <div>
+        {% for message in messages %}
+            <div style="
+                margin-bottom: 10px;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-size: 14px;
+                background-color: {% if message.tags == 'success' %}#4CAF50{% elif message.tags == 'error' %}#F44336{% else %}#333{% endif %};
+                color: white;">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+            <form action="{% url 'wp-login' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-box">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="phone_no" placeholder="Enter your Username" required>
+                </div>
+                <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="text">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <div class="button input-box">
+                    <input type="submit" value="Login">
+                </div>
+                <div class="sign-up-text">
+                    Not an Admin? <a href="{% url 'login' %}">Return to User Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

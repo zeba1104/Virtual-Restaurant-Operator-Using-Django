@@ -1,0 +1,122 @@
+{% extends "admin/base.html" %}
+{% load static %}
+{% block content %}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+    table, th, td {
+        border: 1px solid black;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        vertical-align: middle;
+    }
+    .brand-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .button {
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .edit-button {
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+    }
+    .delete-button {
+        background-color: #dc3545;
+        color: white;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="page-wrapper">
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">Brand List</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <h2>Available Brands</h2>
+        <div style="margin-bottom: 20px;">
+            <a href="{% url 'add-brand' %}" class="button edit-button">+ Add Brand</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Brand Image</th>
+                    <th>Brand Name</th>
+                    <th>Short Description</th>
+                    <th>Swiggy Link</th>
+                    <th>Zomato Link</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for brand in page_obj %}
+                <tr>
+                    <td>
+                        {% if brand.brand_image %}
+                            <img src="{{ brand.brand_image.url }}" alt="Brand Image" class="brand-image">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+                    <td>{{ brand.brand_name }}</td>
+                    <td>{{ brand.short_description }}</td>
+                    <td><a href="{{ brand.swiggy_link }}" target="_blank">Swiggy</a></td>
+                    <td><a href="{{ brand.zomato_link }}" target="_blank">Zomato</a></td>
+                    <td>
+                        <a href="{% url 'edit-brand' brand.id %}" class="button edit-button">Edit</a>
+                        <form method="post" action="{% url 'delete-brand' brand.id %}" 
+                              onsubmit="return confirm('Are you sure you want to delete this brand?');" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="button delete-button">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center;">No brands found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination Controls -->
+        <div class="pagination" style="margin-top: 20px;">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
